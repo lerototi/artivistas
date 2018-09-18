@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="page-content">
+
+		<div class="content">
+			<div class="content-profile">
+				<div class="name-image">
+				<!--TODO   -->
+				<!-- https://www.primefaces.org/showcase/ui/dnd/draggable.xhtml -->
+					<p:graphicImage library="images" name="img-profile2.JPG" width="220"
+						height="240" styleClass="profile-img" />
+					<h:panelGrid columns="2" styleClass="table-center">
+						<h:outputText styleClass="profile-name"
+							value="#{userMB.currentUser.pflUser.name}" />
+						<h:outputText styleClass="profile-name"
+							value="#{userMB.currentUser.pflUser.surname}" />
+					</h:panelGrid>
+				</div>
+
+			</div>
+
+			<div class="conteiner-prof-left">
+				<div class="content-bio">
+					<h:outputLabel value="Bio" styleClass="content-title" />
+					
+				
+				<h:panelGrid columns="2" styleClass="content-data" >
+					<h:outputText value="Brithday:" />
+					<h:outputText value="#{userMB.currentUser.pflUser.dateOfBrithday}" >
+						<f:convertDateTime pattern="dd/MM/yyy" />
+					</h:outputText>
+
+					<h:outputText value="Instagram:" />
+					<h:outputText value="#{userMB.currentUser.pflUser.instagram}" />
+
+					<h:outputText value="Facebook:" />
+					<h:outputText value="#{userMB.currentUser.pflUser.facebook}" />
+				</h:panelGrid>
+				
+				
+
+				<h:outputText value="#{userMB.currentUser.pflUser.description}" />
+				</div>				
+			</div>
+			
+			<div class="container-profile">
+					
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

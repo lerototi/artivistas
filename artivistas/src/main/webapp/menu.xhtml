@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/tags">
+<ui:fragment id="menu">
+
+	<h:outputText id="logo" value="Artivistas" />
+	<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIM">
+		<h:form>
+
+			<nav class="user">
+				<ul>
+					
+				</ul>
+			</nav>
+			<nav>
+				<a href="#" id="menu-icon"></a>
+				<ul>
+					<li class="current-user"><p:graphicImage library="images" name="img-profile2.JPG" width="25" height="25" styleClass="profile-img-menu" />	</li>
+					<li><h:commandLink value="#{userMB.currentUser.pflUser.name}" action="#{userMB.showCurrentUserData}" /></li>
+					<li><h:commandLink value="Home" action="/index.xhtml?faces-redirect=true" /></li>
+					<li><h:commandLink value="create" /></li>
+					<li><h:commandLink value="Work" /></li>
+					<li><h:commandLink value="Contact" /></li>
+				</ul>
+			</nav>
+		</h:form>
+	</sec:authorize>
+</ui:fragment>
+</html>

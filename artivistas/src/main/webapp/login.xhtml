@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+	<ui:define name="page-content">
+		<div class="content">
+			<div class="content-login">
+
+				<h:outputText value="Usuário e/  ou senha inválidos!"
+					rendered="#{param.error}"
+					style="color:darkred; font-size: 14px; padding-bottom: 10px;" />
+
+				<p:fieldset legend="Login" style="margin-bottom:20px">
+					<form action="login" method="post">
+
+						<h:panelGrid columns="2">
+							<p:outputLabel value="User" />
+							<input type="text" id="username" name="username"
+								required="required" />
+
+							<p:outputLabel value="Password" />
+							<input type="password" id="password" name="password"
+								required="required" />
+							
+							<p:commandLink value="Register" action="#{userMB.register}"/>
+
+						</h:panelGrid>
+
+						<input name="submit" type="submit" value="submit" />
+
+					</form>
+				</p:fieldset>
+			</div>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

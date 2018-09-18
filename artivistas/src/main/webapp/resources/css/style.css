@@ -1,0 +1,299 @@
+@import
+	url('https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display');
+
+body {
+	background-color: #e6fdcb;
+}
+
+header {
+	background: #0c5800;
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	border-bottom: 1px solid;
+	border-color: black;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	display: inline-block;
+	float: left;
+	padding: 10px;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+nav {
+	float: right;
+	padding: 4px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#logo {
+	position: absolute;
+	color: #ffbf17;
+	font-family: 'Sedgwick Ave Display', cursive;
+	font-size: 38px;
+	margin-top: 5px;
+	margin-left: 11%;
+}
+
+#sub-logo {
+	position: absolute;
+	color: #de0607;
+	font-family: 'Sedgwick Ave Display', cursive;
+	font-size: 16px;
+	margin-top: 55px;
+	margin-left: 12%;
+}
+
+
+@media only screen and (max-width: 640px) {
+	header {
+		position: absolute;
+	}
+	#menu-icon {
+		display: inline-block;
+	}
+	nav ul, nav:active ul {
+		display: none;
+		position: absolute;
+		padding: 20px;
+		background: black;
+		right: 10px;
+		top: 65px;
+		width: 35%;
+	}
+	
+	nav:hover ul {
+		display: block;
+	}
+	nav li {
+		text-align: center;
+		width: 100%;
+		padding: 15px 0;
+		margin: 0;
+	}
+}
+
+.style_footer {
+	background-color: #25CDFD;
+	border-top: 1px;
+	text-align: center;
+	bottom: 0;
+	left: 0;
+	height: 25px;
+	position: fixed;
+	width: 100%;
+}
+
+.footer-txt {
+	margin-bottom: 10px;
+}
+
+/*-------------------CONTAINERS---------------------*/
+.container{
+	position: relative;
+	width: 100%;
+	margin-top: 80px;
+	left: 0;
+}
+
+.conteiner-left-index{
+	float:left;
+	width: 200px;
+	margin-left:10%;
+	min-height: 500px;
+	background-color: white;
+	border-radius: 5px;
+	
+}
+
+.conteiner-left-profile{
+	float:left;
+	width: 200px;
+	margin-left:10%;
+	min-height: 500px;
+	border-radius: 5px;	
+}
+	
+	.container-profile{
+	float: right;
+	width: 50%;
+	min-height: 500px;
+	margin-top:25%;
+	padding-left: 20px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+/*------------------------------CONTENTS------------------------------*/
+
+.content{
+	position: relative;
+	float: left;
+	width: 70%;
+	min-height: 500px;
+	margin-left: 15%;
+	border-radius: 10px;
+}
+
+.content-index{
+	position: relative;
+	float: left;
+	width: 50%;
+	min-height: 500px;
+	margin-left: 10px;
+	border-radius: 10px;
+}
+
+
+/*FOLDER REGISTER----- */
+/*-------CONTENT-REGISTER----- */
+
+.content-register{
+	width: 100%;
+	min-height: 500px;
+	border-radius: 10px;
+	background-color: white;
+}
+/*-------INDEX----- */
+/*-------CONTENT-POST----- */
+
+.content-post{
+	width: 100%;
+	height: 100px;
+	border-radius: 10px;
+	background-color: white;	
+}
+
+.post{
+	width: 100%;
+	border-radius: 10px;
+}
+
+/*-------CONTENT-FEED----- */
+.content-feed{
+	background-color: white;
+	margin-top: 10px;
+	width: 100%;
+	border-radius: 10px;
+	min-height: 300px; 
+}
+
+/*-------CONTENT-REGISTER----- */
+/*-------REGISTER**----- */
+.content-register{
+	width: 100%;
+	min-height: 500px;
+	border-radius: 10px;
+	background-color: white;
+	margin-left: 50%;
+}
+
+/*-------CONTENT-PROFILE----- */
+/*-------PROFILE----- */
+.content-profile{
+	position: relative;
+	background-color: white;
+	margin-top: 2px;
+	width: 100%;
+	min-height: 300px; 
+	border-radius: 20px;
+}
+
+.profile-name{
+	font-size: x-large;
+	font-weight: bold;
+}
+
+.conteiner-prof-left{
+	position:relative;
+	float: left;
+	width:280px;
+	margin-top: 25px;
+}
+
+.content-bio{
+	position:relative;
+	width:100%;
+	background-color: white;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.content-title{
+	position: relative;
+	font-size: large;
+	font-weight: bold;
+	padding-bottom: 30px;
+}
+
+.content-data{
+	position: relative;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+.content-main-profile{
+	float: left;
+	width: 70%;
+	min-height: 500px;
+	margin-left: 10px;
+	border-radius: 10px;
+}
+
+.name-image{
+	position: absolute;
+	bottom: 0px;
+	margin-left: 20px;
+}
+
+.current-user{
+	margin-top: -11px;	
+	padding-right: 0 !important;
+}
+
+
+.profile-label{
+	font-size: large;
+	font-weight: bold;
+}
+
+.profile-img{
+	border: 2px solid #dbdbdb;
+	border-radius: 100%;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.profile-img-menu{
+	border: 1px solid #dbdbdb;
+	border-radius: 100%;
+}
+
+.text-center{
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.table-center{
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}

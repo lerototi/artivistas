@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template.xhtml">
+	
+	
+	<ui:define name="page-content">
+
+		<div class="conteiner-left-index"></div>
+		
+		
+		<div class="content-index">
+
+			<div class="content-post">
+			<p:textEditor widgetVar="editor" height="63"
+				style="margin-bottom:10px" placeholder="Enter with your mind think">
+				<f:facet name="toolbar">
+					<span class="ql-formats">
+						<button class="ql-bold"></button>
+						<button class="ql-italic"></button>
+						<button class="ql-underline"></button>
+						<button class="ql-strike"></button>
+					</span>
+					<span class="ql-formats"> <select class="ql-font"></select>
+						<select class="ql-size"></select>
+					</span>
+				</f:facet>
+			</p:textEditor>
+		</div>
+
+		<div class="content-feed"></div>
+
+		</div>
+
+		
+
+		
+
+	</ui:define>
+</ui:composition>
+</html>
