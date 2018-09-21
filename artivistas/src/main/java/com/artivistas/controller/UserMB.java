@@ -44,7 +44,7 @@ public User getCurrentUser() {
 	}
 	
 	public String register() {
-		return "/reg/user.xhtmml";
+		return "/account/signup.xhtml?faces-redirect=true";
 	}
 	
 	

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="../template.xhtml">
+	<ui:define name="page-content">
+		<div class="content">
+			<div class="content-register">
+				<p:fieldset legend="Register" style="margin-bottom:20px">
+					<h:form>
+					<h:panelGrid columns="2" style="border:none">
+						<p:inputText id="name" value="#{signUpMB.profileUser.name}" placeholder="Name"  /> 
+						<p:inputText id="surname" value="#{signUpMB.profileUser.surname}" placeholder="Surname" />
+					</h:panelGrid>
+					<h:panelGrid>
+						<p:inputText id="mail" value="#{signUpMB.user.mail}" placeholder="E-mail" size="46" />	
+					</h:panelGrid>
+					<h:panelGrid columns="2">
+						<p:password id="password" value="#{signUpMB.user.password}" feedback="true" inline="true" placeholder="Password" match="PasswordConf" />
+						<p:password id="PasswordConf" value="#{signUpMB.confirmPw}"  placeholder="Password confirmation"/>
+						<p:calendar id="brithday" value="#{signUpMB.profileUser.dateOfBrithday}" placeholder="Brithday" /><h:outputLabel value="" />
+						<p:inputText id="cellphone" value="#{signUpMB.user.cellphone}" placeholder="Cellphone"/>
+					</h:panelGrid>
+					<p:commandButton value="Save" action="#{signUpMB.save}"/>
+					</h:form>
+				</p:fieldset>
+			</div>
+
+		</div>
+
+
+
+
+
+	</ui:define>
+</ui:composition>
+</html>

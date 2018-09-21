@@ -12,7 +12,7 @@ import com.artivistas.service.UserService;
 
 @RequestScope
 @Component
-public class RegisterUserMB {
+public class SignUpMB {
 	
 	@Autowired
 	private UserService userService;
