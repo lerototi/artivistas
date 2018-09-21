@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +25,9 @@ public class UserService {
 	
 	@Autowired
 	AuthorityRepository<Authority> authorityRepository;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Transactional
 	public List<User> getAllUsers(){
@@ -47,14 +51,14 @@ public class UserService {
 		Date date = new Date();	
 		profileUser.setDateOfCreationProfile(date);
 		
-		//TODO Encripter password
-		//user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));		
+		//Encripter password
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));		
 		
-		//TODO add authority to user
-		//Authority userAuthority = authorityRepository.findByName("ROLE_USER");
-		//user.setAuthorities(new ArrayList<Authority>(Arrays.asList(userAuthority)));
+		//Add authority USER to new user
+		Authority userAuthority = authorityRepository.findByRole("USER");
+		user.setAuthorities(new ArrayList<Authority>(Arrays.asList(userAuthority)));
 		
-		//set relation whith profile
+		//set relation with profile
 		profileUser.setUser(user);
 		user.setPflUser(profileUser);
 		return userRepository.save(user) != null;
@@ -74,5 +78,10 @@ public class UserService {
 	@Transactional
 	public User getById(Long id) {
 		return userRepository.findOne(id);
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }

@@ -1,19 +1,15 @@
 package com.artivistas.controller;
 
-import javax.faces.bean.ManagedBean;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 
-import com.artivistas.model.Authority;
 import com.artivistas.model.ProfileUser;
 import com.artivistas.model.User;
 import com.artivistas.service.AuthorityService;
 import com.artivistas.service.ProfileUserService;
 import com.artivistas.service.UserService;
 
-@ManagedBean
 @RequestScope
 @Component
 public class RegisterUserMB {
