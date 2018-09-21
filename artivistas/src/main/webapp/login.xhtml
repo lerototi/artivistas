@@ -25,14 +25,14 @@
 							<p:outputLabel value="Password" />
 							<input type="password" id="password" name="password"
 								required="required" />
-							
-							<p:commandLink value="Register" action="#{userMB.register}"/>
 
 						</h:panelGrid>
 
 						<input name="submit" type="submit" value="submit" />
-
 					</form>
+					<h:form>
+						<p:commandLink value="Register" action="#{userMB.register}" />
+					</h:form>
 				</p:fieldset>
 			</div>
 

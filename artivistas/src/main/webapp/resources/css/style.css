@@ -161,15 +161,6 @@ nav {
 	border-radius: 10px;
 }
 
-
-/*FOLDER REGISTER----- */
-/*-------CONTENT-REGISTER----- */
-
-.content-register{
-	width: 100%;
-	min-height: 500px;
-	border-radius: 10px;
-	background-color: white;
 }
 /*-------INDEX----- */
 /*-------CONTENT-POST----- */
@@ -202,7 +193,7 @@ nav {
 	min-height: 500px;
 	border-radius: 10px;
 	background-color: white;
-	margin-left: 50%;
+
 }
 
 /*-------CONTENT-PROFILE----- */
