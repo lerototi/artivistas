@@ -4,7 +4,10 @@ package com.artivistas.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -29,7 +32,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter{
 	public void configure (HttpSecurity http) throws Exception{
 		http
 		.authorizeRequests()
-			.antMatchers("/resources/**/*","/css/**","/javax.faces.resource/**","/template.jsf", "/account/signup.jsf").permitAll()
+			.antMatchers("/resources/**/*","/css/**","/javax.faces.resource/**","/template.jsf", "/account/signup.jsf","/account/signup**").permitAll()
 			.anyRequest().authenticated()
 		.and()
 			.formLogin()
@@ -55,6 +58,12 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter{
 			.authoritiesByUsernameQuery(PERMISSION_BY_USER)
 			.rolePrefix("ROLE_");
 		
+	}
+	
+	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+	@Override
+	public AuthenticationManager authenticationManager()throws Exception{
+		return super.authenticationManager();
 	}
 	
 	

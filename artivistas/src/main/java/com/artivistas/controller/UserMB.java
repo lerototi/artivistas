@@ -1,18 +1,14 @@
 package com.artivistas.controller;
 
-import javax.faces.bean.ManagedBean;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
 
 import com.artivistas.model.User;
 import com.artivistas.service.UserService;
 
-@ManagedBean
-@SessionScope
+
 @Component
 public class UserMB {
 	

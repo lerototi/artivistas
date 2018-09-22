@@ -80,6 +80,13 @@ public class User implements Serializable {
 	public void setAuthorities(List<Authority> authorities) {
 		this.authorities = authorities;
 	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 	@Override
 	public String toString() {
 		return "User [idUser=" + idUser + ", mail=" + mail + ", cellphone=" + cellphone + ", password=" + password

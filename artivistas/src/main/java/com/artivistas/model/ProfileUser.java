@@ -43,7 +43,7 @@ public class ProfileUser implements Serializable {
 	@Column(name = "instagram", nullable = true, length = 50)
 	private String instagram;
 
-	@Column(name = "date_brithday", nullable = false)
+	@Column(name = "date_brithday", nullable = true)
 	private Date dateOfBrithday;
 
 	@Column(name = "date_creation_pf", nullable = false)

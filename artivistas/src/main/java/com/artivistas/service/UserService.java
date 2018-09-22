@@ -46,6 +46,10 @@ public class UserService {
 	
 	@Transactional
 	public boolean addUser(User user, ProfileUser profileUser) {
+		boolean saved = false;
+		
+		//Activate user
+		user.setEnabled(true);
 		
 		//Set actual date
 		Date date = new Date();	
@@ -61,7 +65,19 @@ public class UserService {
 		//set relation with profile
 		profileUser.setUser(user);
 		user.setPflUser(profileUser);
-		return userRepository.save(user) != null;
+		
+		try {
+			 saved = userRepository.save(user) != null;
+		} catch (Exception e) {
+			System.err.println("USER ALREADy REGISTRED"+ e);
+		}
+		
+		
+		return saved;
+	}
+	
+	public Boolean alredyRegistraded(String mail) {		
+		return userRepository.findByMail(mail) != null;
 	}
 	
 	@Transactional 
@@ -84,4 +100,6 @@ public class UserService {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
+	
 }
