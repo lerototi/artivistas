@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -56,27 +57,41 @@ public class ProfileUser implements Serializable {
 	@OneToMany(mappedBy = "pflUser")
 	private List<ProfileColetive> pflsColetive;
 	
-	
-	@OneToMany(mappedBy = "pflUser") 
+	@OneToMany(mappedBy = "pflUser", orphanRemoval=true, fetch=FetchType.LAZY) 
 	private List<ProfileIndividual> pflsIndividual;
 	
-
-	// @Column(name = "Country", nullable = false)
-	// private Country country;
-
-	// TODO Reationament ProfileIndividual to Category
-	// private Category category;
-
-	// TODO Relationament ProfileIndividual to followers
-	// @OneToMany
-	// private List<Followers> flwing;
-
+	
+	@OneToMany(mappedBy = "profileUser", cascade = CascadeType.ALL)
+	private List<HabilityUser> habilitiesUser;
 	
 
-	// TODO Relationament profileUser to Coletive
-	
-	
-	
+	public List<ProfileIndividual> getPflsIndividual() {
+		return pflsIndividual;
+	}
+
+	public void setPflsIndividual(List<ProfileIndividual> pflsIndividual) {
+		this.pflsIndividual = pflsIndividual;
+	}
+
+	public List<ProfileColetive> getPflsColetive() {
+		return pflsColetive;
+	}
+
+	public void setPflsColetive(List<ProfileColetive> pflsColetive) {
+		this.pflsColetive = pflsColetive;
+	}
+
+	public List<HabilityUser> getHabilitiesUser() {
+		return habilitiesUser;
+	}
+
+	public void setHabilitiesUser(List<HabilityUser> habilitiesUser) {
+		this.habilitiesUser = habilitiesUser;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public String getSurname() {
 		return surname;

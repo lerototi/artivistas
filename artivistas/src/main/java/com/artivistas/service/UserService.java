@@ -3,6 +3,7 @@ package com.artivistas.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,11 +61,20 @@ public class UserService {
 		
 		//Add authority USER to new user
 		Authority userAuthority = authorityRepository.findByRole("USER");
+		
 		user.setAuthorities(new ArrayList<Authority>(Arrays.asList(userAuthority)));
 		
+		System.out.println(user.getAuthorities().size());
+		System.out.println(user.getAuthorities().get(0));
+		 for (Authority authority : user.getAuthorities()) {
+			 System.out.println(authority.getRole());
+			
+		}
 		//set relation with profile
 		profileUser.setUser(user);
 		user.setPflUser(profileUser);
+		
+		
 		
 		try {
 			 saved = userRepository.save(user) != null;

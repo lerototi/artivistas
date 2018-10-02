@@ -1,16 +1,19 @@
 package com.artivistas.controller;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.artivistas.model.User;
 import com.artivistas.service.UserService;
 
 
-@Component
-public class UserMB {
+@ManagedBean
+public class UserMB extends SpringBeanAutowiringSupport{
 	
 	@Autowired
 	public UserService userService;
@@ -26,12 +29,11 @@ public class UserMB {
 	
 public User getCurrentUser() {
 		
-		System.out.println(currentUser ==null);
 		if(currentUser ==null) {
 			currentUser = new User();
 			getCurrentUserName();
 			 currentUser = userService.findByMail(userDetails.getUsername());
-			 System.out.println("service "+currentUser.getPflUser().getName());
+			 System.out.println("Current User: "+currentUser.getPflUser().getName());
 			return currentUser;
 			
 		}else

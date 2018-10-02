@@ -16,6 +16,8 @@ public class Authority implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name = "id_auth")
+	
+	
 	private Long idAuth;
 	
 	private String role;

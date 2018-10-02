@@ -20,12 +20,9 @@ public class DataStart {
 	private static UserService userService;
 	
 	@Autowired
-	private static ProfileUserService profileUserService;
-	
-	@Autowired
 	private static AuthorityService authorityService;
 	
-	public static void man(String Args) {
+	public static void main(String[] args) {
 
 		UtilService utilService = new UtilService();
 		
@@ -45,8 +42,8 @@ public class DataStart {
 		user.setMail("lerototi@gmail.com");
 		user.setPassword("1234");
 		user.setCellphone("+55 61 998487-7797");
+		user.setEnabled(true);
 		user.setAuthorities(authorities);
-		//userService.addUser(user, profileUser)
 		
 		ProfileUser profileUser = new ProfileUser();		
 		profileUser.setDateOfBrithday(utilService.getBrithday("17/08/1989"));
@@ -58,7 +55,7 @@ public class DataStart {
 		profileUser.setDescription("Eu sou o melhor programador do mundo, já está escrito!! Jah Bless");
 		profileUser.setUser(user);
 		
-		//userService.addUser(user, profileUser);
+		userService.addUser(user, profileUser);
 		
 		authorities = new ArrayList<>();
 		authorities.add(auth2);
@@ -68,6 +65,7 @@ public class DataStart {
 		user = new User();
 		user.setMail("anaabrahao23@gmail.com");
 		user.setPassword("4321");
+		user.setEnabled(true);
 		user.setCellphone("+55 61 9999-9999");
 		
 		profileUser = new ProfileUser();

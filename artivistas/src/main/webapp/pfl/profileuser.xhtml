@@ -42,7 +42,7 @@
 					<h:outputText value="Facebook:" />
 					<h:outputText value="#{userMB.currentUser.pflUser.facebook}" />
 				</h:panelGrid>
-				
+		
 				
 
 				<h:outputText value="#{userMB.currentUser.pflUser.description}" />
@@ -50,6 +50,38 @@
 			</div>
 			
 			<div class="container-profile">
+			
+				<h:panelGrid columns="1" styleClass="table-center">
+					<h:outputText value="Habilidades Artísticas e Artivísticas." styleClass="content-title" />
+				</h:panelGrid>
+				<h:commandButton value="+" onclick="PF('activits').show();" />
+				
+				<p:dialog header="Incluir atividade" widgetVar="activits" minHeight="350" modal="true">
+						
+						<h:form>
+						<h:panelGrid columns="2">
+							<p:selectOneRadio>
+								<f:selectItems value="" />
+							</p:selectOneRadio>
+						</h:panelGrid>	
+						
+						
+						<h:panelGrid columns="2">	
+							<h:outputLabel value="Hability" />
+							<p:inputText value="" size="50"  />
+						</h:panelGrid>
+						
+						<h:panelGrid>
+							<h:outputLabel value="Palavras-chaves:" />
+						 	<p:selectCheckboxMenu value="#{profileUserMB.selectedTags}" label="Tags" multiple="true" filter="true" >
+						 		<f:selectItems value="" />
+						 	</p:selectCheckboxMenu>
+						</h:panelGrid>
+						
+						<p:commandButton value="Salvar"  />
+						</h:form>
+					</p:dialog>
+					
 					
 			</div>
 		</div>

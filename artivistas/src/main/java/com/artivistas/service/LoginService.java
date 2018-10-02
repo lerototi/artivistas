@@ -17,9 +17,6 @@ public class LoginService {
 
 	@Autowired
 	protected AuthenticationManager authenticationManager;
-	
-	/*@Autowired
-	RequestCache requestCache;*/
 
 	public void authenticateUserAndSession(String username, String password, HttpServletRequest request) {
 		
@@ -32,6 +29,7 @@ public class LoginService {
 			Authentication authenticationUser= authenticationManager.authenticate(token);
 			
 			SecurityContextHolder.getContext().setAuthentication(authenticationUser);
+			
 		} catch (Exception e) {
 			System.err.println("Error: "+e);
 		}
