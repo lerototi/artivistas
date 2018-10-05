@@ -17,8 +17,8 @@ public class Tags {
 	@GeneratedValue
 	private Long id;
 	
-	@Column(nullable = false)
-	private String tag;
+	@Column(nullable = false, name  = "name")
+	private String nameTag;
 	
 	@ManyToMany(mappedBy = "tags")
 	private List<HabilityUser> habilityUsers;
@@ -31,12 +31,12 @@ public class Tags {
 		this.id = id;
 	}
 
-	public String getTag() {
-		return tag;
+	public String getNameTag() {
+		return nameTag;
 	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setNameTag(String nameTag) {
+		this.nameTag = nameTag;
 	}
 
 	public List<HabilityUser> getHabilityUsers() {

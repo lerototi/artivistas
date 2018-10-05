@@ -59,24 +59,20 @@
 				<p:dialog header="Incluir atividade" widgetVar="activits" minHeight="350" modal="true">
 						
 						<h:form>
-						<h:panelGrid columns="2">
-							<p:selectOneRadio>
-								<f:selectItems value="" />
-							</p:selectOneRadio>
-						</h:panelGrid>	
 						
-						
-						<h:panelGrid columns="2">	
-							<h:outputLabel value="Hability" />
-							<p:inputText value="" size="50"  />
+						<h:panelGrid columns="1">	
+							<h:outputLabel value="Habilidade:" />
+							<p:inputText value="" size="40"  />
 						</h:panelGrid>
-						
-						<h:panelGrid>
-							<h:outputLabel value="Palavras-chaves:" />
-						 	<p:selectCheckboxMenu value="#{profileUserMB.selectedTags}" label="Tags" multiple="true" filter="true" >
-						 		<f:selectItems value="" />
-						 	</p:selectCheckboxMenu>
+						<h:outputLabel value="Insira algumas tags para classificar sua atividade" />
+						<h:panelGrid columns="1">
+							<p:autoComplete id="tags" multiple="true" dropdown="true" 
+						value="#{tagsMB.selectedTags}" completeMethod="#{tagsMB.completeTags}" 
+						var="tag" itemLabel="#{tag.nameTag}" itemValue="#{tag.id}" queryDelay="600" > 
+          						
+							</p:autoComplete>
 						</h:panelGrid>
+					
 						
 						<p:commandButton value="Salvar"  />
 						</h:form>

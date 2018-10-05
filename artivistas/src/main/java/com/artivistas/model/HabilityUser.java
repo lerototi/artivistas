@@ -40,6 +40,7 @@ public class HabilityUser {
 	private ProfileUser profileUser;
 	
 	@ManyToMany
+	@JoinColumn(name = "fk_tag")
 	private List<Tags> tags;
 
 	public Long getId() {
