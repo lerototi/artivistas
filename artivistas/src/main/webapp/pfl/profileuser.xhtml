@@ -67,8 +67,8 @@
 						<h:outputLabel value="Insira algumas tags para classificar sua atividade" />
 						<h:panelGrid columns="1">
 							<p:autoComplete id="tags" multiple="true" dropdown="true" 
-						value="#{tagsMB.selectedTags}" completeMethod="#{tagsMB.completeTags}" 
-						var="tag" itemLabel="#{tag.nameTag}" itemValue="#{tag.id}" queryDelay="600" > 
+						value="#{tagsMB.selectedTags}" completeMethod="#{tagsMB.autoCompleteTags}" 
+						var="tag" itemLabel="#{tag.nameTag}" itemValue="#{tag.id}" queryDelay="600" minQueryLength="3" > 
           						
 							</p:autoComplete>
 						</h:panelGrid>

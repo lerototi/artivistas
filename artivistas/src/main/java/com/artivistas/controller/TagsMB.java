@@ -28,73 +28,10 @@ public class TagsMB extends SpringBeanAutowiringSupport {
 	@Autowired
 	private TagsService tagsService;
 
-	public List<String> completeText(String query) {
 
-		List<String> results = new ArrayList<String>();
-		// TODO Sugestions Tag
-		return results;
-	}
-
-	public List<Tags> completeTags(String query) {
-
-		@SuppressWarnings("unchecked")
-		List<Tags> allTags = UtilService.toList(tagsService.findAll());
-		List<Tags> filteredTags = new ArrayList<Tags>();
-
-		System.out.println(allTags.size());
-
-		if (!query.startsWith("#"))
-			query = "#" + query;
-
-		System.out.println(query);
-
-		for (int i = 0; i < allTags.size(); i++) {
-			Tags tag = allTags.get(i);
-			Tags queryTag = new Tags();
-			
-			
-			//if TAG start with QUERY
-			if (tag.getNameTag().toLowerCase().startsWith(query.toLowerCase())) {
-				
-				//Vefify if List filteredTag is input. if YES add QUERY
-				if (filteredTags.size()==0) {
-					
-					queryTag.setNameTag(query);
-					filteredTags.add(queryTag);
-				}
-				
-				//vefify if current TAG is inside of filteredTags 
-				boolean listHasTheTag= false;
-				for (int j = 0; j < filteredTags.size(); j++) {
-						
-					if (filteredTags.get(j).getNameTag().equals(tag.getNameTag())) {
-						listHasTheTag = true;
-					}else
-						listHasTheTag = false;
-						
-					}
-				//include
-				if (!listHasTheTag) {
-					filteredTags.add(tag);
-				}
-			}
-			
-			//Verify if the query is in the BD lista tags
-			if (!tag.getNameTag().toLowerCase().startsWith(query)) {
-				
-				
-				if (filteredTags.size()==0) {
-					
-					queryTag.setNameTag(query);
-					filteredTags.add(queryTag);
-					
-				}
-						
-			}
-			
-		}
-
-		return filteredTags;
+	public List<Tags> autoCompleteTags(String query) {
+		System.out.println("MB");
+		return tagsService.buildAutocompleteList(query);
 	}
 
 	public Tags getTag() {

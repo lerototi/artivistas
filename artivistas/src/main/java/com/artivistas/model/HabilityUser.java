@@ -3,7 +3,6 @@ package com.artivistas.model;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,8 +28,8 @@ public class HabilityUser {
 	@Column
 	private Date until;
 	
-	@Column(name = "current_date", nullable = false)
-	private boolean untilToday;
+	@Column(name = "until_today")
+	private Boolean untilToday;
 	
 	@OneToMany(mappedBy = "habilityUser", fetch = FetchType.LAZY)
 	private List<HabBaseProfileUser> habBasesProfileUsers;
