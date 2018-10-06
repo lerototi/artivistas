@@ -9,12 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.artivistas.model.Tags;
 import com.artivistas.repository.TagsRepository;
+import com.artivistas.util.UtilService;
 
 @Service
 public class TagsService {
 
 	@Autowired
-	private TagsRepository tagsRepository;
+	private TagsRepository<Tags> tagsRepository;
 	
 	
 	@Transactional
@@ -72,17 +73,37 @@ public class TagsService {
 				if (filteredTags.size()==0) {
 					
 					queryTag.setNameTag(query);
-					filteredTags.add(queryTag);
-					
-				}
-						
-			}
+					filteredTags.add(queryTag);	
+				}			
+			}	
+		}
+
+		return filteredTags;
+	}
+
+
+	@Transactional
+	public List<Tags> verifyExistentsAndPersistNewTags(List<Tags> selectedTags) {
+		
+		List<Tags> persistedTags =  new ArrayList<Tags>();
+		
+		for (int i = 0; i < selectedTags.size(); i++) {
+			System.out.println(selectedTags.get(i).getId()+" - "+selectedTags.get(i).getNameTag());
+			
+			
+			Tags tag = tagsRepository.findByNameTag(selectedTags.get(i).getNameTag());
+			if (tag != null) {
+
+				persistedTags.add(tag);
+			
+			}else
+				tag = tagsRepository.save(selectedTags.get(i));
+				persistedTags.add(tag);
 			
 		}
 		
+		return persistedTags;
 		
-		
-		return filteredTags;
 	}
 
 	

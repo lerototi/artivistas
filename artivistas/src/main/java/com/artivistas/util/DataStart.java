@@ -1,4 +1,4 @@
-package com.artivistas.repository;
+package com.artivistas.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ import com.artivistas.model.User;
 import com.artivistas.service.AuthorityService;
 import com.artivistas.service.ProfileUserService;
 import com.artivistas.service.UserService;
-import com.artivistas.service.UtilService;
 
 
 public class DataStart {

@@ -6,4 +6,6 @@ import com.artivistas.model.Tags;
 
 public interface TagsRepository<U> extends CrudRepository<Tags, Long>{
 
+	public Tags findByNameTag(String nameTag);
+	
 }

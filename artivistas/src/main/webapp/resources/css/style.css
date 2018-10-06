@@ -284,3 +284,7 @@ nav {
 .content_profile_title{
 	
 }
+
+.hability .ui-datepicker-inline .ui-datepicker-calendar {
+  display: none;        
+}

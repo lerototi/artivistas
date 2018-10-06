@@ -1,4 +1,4 @@
-package com.artivistas.service;
+package com.artivistas.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

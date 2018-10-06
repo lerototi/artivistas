@@ -1,6 +1,6 @@
 package com.artivistas.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -21,6 +21,9 @@ public class HabilityUser {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Column(length=40,nullable=false)
+	private String hability;
 
 	@Column
 	private Date since;
@@ -35,7 +38,7 @@ public class HabilityUser {
 	private List<HabBaseProfileUser> habBasesProfileUsers;
 	
 	@ManyToOne
-	@JoinColumn(name = "fk_profile_user")
+	@JoinColumn(name = "fk_profile_user", nullable=false)
 	private ProfileUser profileUser;
 	
 	@ManyToMany
@@ -81,5 +84,30 @@ public class HabilityUser {
 	public void setHabBasesProfileUsers(List<HabBaseProfileUser> habBasesProfileUsers) {
 		this.habBasesProfileUsers = habBasesProfileUsers;
 	}
+
+	public String getHability() {
+		return hability;
+	}
+
+	public void setHability(String hability) {
+		this.hability = hability;
+	}
+
+	public Boolean getUntilToday() {
+		return untilToday;
+	}
+
+	public void setUntilToday(Boolean untilToday) {
+		this.untilToday = untilToday;
+	}
+
+	public ProfileUser getProfileUser() {
+		return profileUser;
+	}
+
+	public void setProfileUser(ProfileUser profileUser) {
+		this.profileUser = profileUser;
+	}
+	
 
 }
