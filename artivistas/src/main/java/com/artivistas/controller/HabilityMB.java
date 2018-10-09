@@ -13,6 +13,7 @@ import com.artivistas.model.Tags;
 import com.artivistas.service.HabilityUserService;
 import com.artivistas.service.ProfileUserService;
 import com.artivistas.service.TagsService;
+import com.artivistas.service.UserService;
 
 @ManagedBean
 public class HabilityMB extends SpringBeanAutowiringSupport{
@@ -23,6 +24,9 @@ public class HabilityMB extends SpringBeanAutowiringSupport{
 	
 	@Autowired
 	private TagsService tagService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
 	private ProfileUserService profileUserService;
@@ -39,7 +43,8 @@ public class HabilityMB extends SpringBeanAutowiringSupport{
 		tagService.verifyExistentsAndPersistNewTags(selectedTags);
 		habilityUser.setTags(persistedTags);
 		//TODO Set profileUser in habilityUser
-		profileUserService.
+		
+		habilityUser.setProfileUser(userService.getCurrentUser().getPflUser());
 		habilityUserService.save(habilityUser);
 		
 		return"/pfl/profileuser.jsf";

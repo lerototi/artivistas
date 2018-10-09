@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +35,10 @@ public class UserService {
 	public List<User> getAllUsers(){
 		return (List<User>) userRepository.findAll();
 	}
+	
+	private User currentUser;
+
+	private UserDetails userDetails;
 	
 	@Transactional
 	public User findByMail(String mail){
@@ -108,6 +114,30 @@ public class UserService {
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	public User getCurrentUser() {
+		if(currentUser ==null) {
+			currentUser = new User();
+			getNameCurrentUser();
+			 currentUser = this.findByMail(userDetails.getUsername());
+			 System.out.println("Current User: "+currentUser.getPflUser().getName());
+			return currentUser;
+			
+		}else
+			
+		return currentUser;
+		
+	}
+
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
+
+	public String getNameCurrentUser() {
+		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return userDetails.getUsername();
+		
 	}
 
 	
