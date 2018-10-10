@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.artivistas.model.HabilityClassification;
+import com.artivistas.model.HabilityUser;
 import com.artivistas.service.CategoryHabService;
 
 @ManagedBean
@@ -24,7 +25,7 @@ public class ProfileUserMB extends SpringBeanAutowiringSupport{
 	public List<HabilityClassification> getCategoryHabs() {
 		return categoryHabs;
 	}
-
+	
 
 	public String[] getSelectedTags() {
 		return selectedTags;

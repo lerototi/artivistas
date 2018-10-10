@@ -11,7 +11,6 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import com.artivistas.model.HabilityUser;
 import com.artivistas.model.Tags;
 import com.artivistas.service.HabilityUserService;
-import com.artivistas.service.ProfileUserService;
 import com.artivistas.service.TagsService;
 import com.artivistas.service.UserService;
 
@@ -29,33 +28,25 @@ public class HabilityMB extends SpringBeanAutowiringSupport{
 	private UserService userService;
 	
 	@Autowired
-	private ProfileUserService profileUserService;
-	
-	@Autowired
 	private HabilityUserService habilityUserService;
 	
+	private List<HabilityUser> habilitiesUser;
 	
+
 	public String save() {
-		System.out.println("save");
 		
 		List<Tags> persistedTags = new ArrayList<Tags>();
 		
 		tagService.verifyExistentsAndPersistNewTags(selectedTags);
 		habilityUser.setTags(persistedTags);
-		//TODO Set profileUser in habilityUser
 		
 		habilityUser.setProfileUser(userService.getCurrentUser().getPflUser());
 		habilityUserService.save(habilityUser);
 		
 		return"/pfl/profileuser.jsf";
 	}
-
-
-	public HabilityUser getHabilityUser() {
-		return habilityUser;
-	}
-
-
+	
+	
 	public void setHabilityUser(HabilityUser habilityUser) {
 		this.habilityUser = habilityUser;
 	}
@@ -69,8 +60,18 @@ public class HabilityMB extends SpringBeanAutowiringSupport{
 	public void setSelectedTags(List<Tags> selectedTags) {
 		this.selectedTags = selectedTags;
 	}
-	
-	
-	
+
+	public List<HabilityUser> getHabilitiesUser() {
+		return habilityUserService.findAllByProfileUser(userService.getCurrentUser().getPflUser());
+	}
+
+	public void setHabilitiesUser(List<HabilityUser> habilitiesUser) {
+		this.habilitiesUser = habilitiesUser;
+	}
+
+
+	public HabilityUser getHabilityUser() {
+		return habilityUser;
+	}
 	
 }
