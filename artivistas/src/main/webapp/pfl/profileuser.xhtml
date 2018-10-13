@@ -7,129 +7,52 @@
 
 <ui:composition template="../template.xhtml">
 	<ui:define name="page-content">
-
+		
+		<ui:include src="contentProfile.xhtml"></ui:include>
+		
 		<div class="content">
-			<div class="content-profile">
-				<div class="name-image">
-					<!--TODO   -->
-					<!-- https://www.primefaces.org/showcase/ui/dnd/draggable.xhtml -->
-					<p:graphicImage library="images" name="img-profile2.JPG"
-						width="220" height="240" styleClass="profile-img" />
-					<h:panelGrid columns="2" styleClass="table-center">
-						<h:outputText styleClass="profile-name"
-							value="#{userMB.currentUser.pflUser.name}" />
-						<h:outputText styleClass="profile-name"
-							value="#{userMB.currentUser.pflUser.surname}" />
-					</h:panelGrid>
-				</div>
+			
 
-			</div>
-
-			<div class="conteiner-prof-left">
+			<div class="conteiner-main-profile">
 				<div class="content-bio">
+				<h:form>
 					<h:outputLabel value="Bio" styleClass="content-title" />
+					
+					<h:commandLink action="#{profileUserMB.loadProfileData}"> 
+						<p:graphicImage library="images" name="pencil-icon.png"
+						 styleClass="edit-icon"  />
+					</h:commandLink>
 
+					<h:panelGrid>
+						<h:outputText value="#{profileUserMB.profileUser.description}" />					
+					</h:panelGrid>
 
 					<h:panelGrid columns="2" styleClass="content-data">
 						<h:outputText value="Brithday:" />
-						<h:outputText value="#{userMB.currentUser.pflUser.dateOfBrithday}">
+						<h:outputText value="#{profileUserMB.profileUser.dateOfBrithday}">
 							<f:convertDateTime pattern="dd/MM/yyy" />
 						</h:outputText>
 
 						<h:outputText value="Instagram:" />
-						<h:outputText value="#{userMB.currentUser.pflUser.instagram}" />
+						<h:outputText value="#{profileUserMB.profileUser.instagram}" />
 
 						<h:outputText value="Facebook:" />
-						<h:outputText value="#{userMB.currentUser.pflUser.facebook}" />
+						<h:outputText value="#{profileUserMB.profileUser.facebook}" />
 					</h:panelGrid>
 
-
-
-					<h:outputText value="#{userMB.currentUser.pflUser.description}" />
+					
+				</h:form>
+					
 				</div>
 			</div>
-
-			<div class="container-profile">
-
-				<h:panelGrid columns="1" styleClass="table-center">
-					<h:outputText value="" styleClass="content-title" />
-
-				</h:panelGrid>
-
-				<h:panelGrid columns="2" cellspacing="10">
-					<h:commandButton value="+" onclick="PF('activits').show();" />
-					<h:outputText value="Habilidades Artísticas e Artivísticas." styleClass="content-title" />
-				</h:panelGrid>
+			
+			
+			<ui:include src="hability.xhtml"></ui:include>
+			
+			<div class="container-profile"> 
+				<h:outputText value="Movimentos Culturais e Artísticos" styleClass="content-title" />
 				
 				
-						
-				<h:dataTable value="#{habilityMB.habilitiesUser}" var="hability">
-					<h:column>
-						
-						<h:panelGrid column="2">
-							<h:outputText value="#{hability.hability}" styleClass="text-bold"/>
-							
-						</h:panelGrid>
-						
-						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputText value="Desde" />
-							<h:outputText value="#{hability.since}"  >
-								<f:convertDateTime pattern="MM/yyyy" />
-							</h:outputText>
-
-							<h:outputText value="Até" />
-							<h:outputText value="#{hability.until}" >
-								<f:convertDateTime pattern="MM/yyyy" />
-							</h:outputText>
-						</h:panelGrid>
-					</h:column>
-				</h:dataTable>
-
-
-
-
-				<p:dialog header="Incluir atividade" widgetVar="activits"
-					minHeight="350" modal="true">
-
-					<h:form>
-
-						<h:panelGrid columns="1">
-							<h:outputLabel value="Habilidade:" />
-							<p:inputText value="#{habilityMB.habilityUser.hability}"
-								size="50" required="true" />
-						</h:panelGrid>
-
-						<h:panelGrid columns="2" cellpadding="10">
-							<h:outputLabel value="Desde" />
-							<p:calendar id="since" value="#{habilityMB.habilityUser.since}"
-								navigator="true" pattern="MM/yyyy" styleClass="hability" />
-							<h:outputLabel value="Até" />
-							<p:calendar id="until" value="#{habilityMB.habilityUser.until}"
-								navigator="true" pattern="MM/yyyy" styleClass="hability" />
-
-							<h:outputLabel value="Até Hoje?" />
-							<p:selectBooleanCheckbox
-								value="#{habilityMB.habilityUser.untilToday}" />
-						</h:panelGrid>
-
-						<h:outputLabel
-							value="Insira algumas tags para classificar sua atividade" />
-						<h:panelGrid columns="1">
-							<p:autoComplete id="tags" multiple="true" dropdown="true"
-								value="#{habilityMB.selectedTags}"
-								completeMethod="#{tagsMB.autoCompleteTags}" var="tag"
-								itemLabel="#{tag.nameTag}" itemValue="#{tag}" minQueryLength="3"
-								converter="tagsConverter">
-
-							</p:autoComplete>
-						</h:panelGrid>
-
-
-						<p:commandButton value="Salvar" action="#{habilityMB.save}" />
-					</h:form>
-				</p:dialog>
-
-
 			</div>
 		</div>
 

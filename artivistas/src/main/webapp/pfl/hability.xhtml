@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:fragment id="hability_user_profile">
+
+		
+			<div class="container-hability-profile">
+
+				<h:panelGrid columns="1" styleClass="table-center">
+					<h:outputText value="" styleClass="content-title" />
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" cellspacing="10">
+					<h:commandButton value="+" onclick="PF('activits').show();" />
+					<h:outputText value="Minhas habilidades artísticas" styleClass="content-title" />
+				</h:panelGrid>
+				
+				
+						
+				<h:dataTable value="#{habilityMB.habilitiesUser}" var="hability">
+					<h:column>
+						
+						<h:panelGrid column="2">
+							<h:outputText value="#{hability.hability}" styleClass="text-bold"/>
+
+						</h:panelGrid>
+						
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="Desde" />
+							<h:outputText value="#{hability.since}"  >
+								<f:convertDateTime pattern="MM/yyyy" />
+							</h:outputText>
+
+							<h:outputText value="Até" />
+							<h:outputText value="#{hability.until}" >
+								<f:convertDateTime pattern="MM/yyyy" />
+							</h:outputText>
+						</h:panelGrid>
+					</h:column>
+				</h:dataTable>
+
+
+				<p:dialog header="Incluir nova habilidade" widgetVar="activits"
+					minHeight="350" modal="true">
+
+					<h:form>
+
+						<h:panelGrid columns="1">
+							<h:outputLabel value="Habilidade:" />
+							<p:inputText value="#{habilityMB.habilityUser.hability}"
+								size="50" required="true" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" cellpadding="10">
+							<h:outputLabel value="Desde" />
+							<p:calendar id="since" value="#{habilityMB.habilityUser.since}"
+								navigator="true" pattern="MM/yyyy" styleClass="hability" />
+							<h:outputLabel value="Até" />
+							<p:calendar id="until" value="#{habilityMB.habilityUser.until}"
+								navigator="true" pattern="MM/yyyy" styleClass="hability" />
+
+							<h:outputLabel value="Até Hoje?" />
+							<p:selectBooleanCheckbox
+								value="#{habilityMB.habilityUser.untilToday}" />
+						</h:panelGrid>
+
+						<h:outputLabel
+							value="Insira algumas tags para classificar sua atividade" />
+						<h:panelGrid columns="1">
+							<p:autoComplete id="tags" multiple="true" dropdown="true"
+								value="#{habilityMB.selectedTags}"
+								completeMethod="#{tagsMB.autoCompleteTags}" var="tag"
+								itemLabel="#{tag.nameTag}" itemValue="#{tag}" minQueryLength="3"
+								converter="tagsConverter">
+
+							</p:autoComplete>
+						</h:panelGrid>
+
+						<h:panelGrid>
+							<p:commandButton value="Salvar" action="#{habilityMB.save}" />
+						</h:panelGrid>
+					</h:form>
+				</p:dialog>
+			</div>
+</ui:fragment>
+</html>

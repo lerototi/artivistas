@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="page-content">
+
+		<div class="content">
+			<div class="content-profile">
+				<div class="name-image">
+					<!--TODO   -->
+					<!-- https://www.primefaces.org/showcase/ui/dnd/draggable.xhtml -->
+					<p:graphicImage library="images" name="img-profile2.JPG"
+						width="220" height="240" styleClass="profile-img" />
+
+					<h:panelGrid columns="2" styleClass="table-center">
+						<h:outputText styleClass="profile-name"
+							value="#{userMB.currentUser.pflUser.name}" />
+						<h:outputText styleClass="profile-name"
+							value="#{userMB.currentUser.pflUser.surname}" />
+					</h:panelGrid>
+				</div>
+
+			</div>
+
+			<div class="conteiner-main-profile">
+				<div class="content-bio-update">
+					<h:form>
+						<h:outputLabel value="Bio" styleClass="content-title" />
+
+
+						<h:panelGrid columns="2" styleClass="content-data">
+							<h:outputText value="Descrição: " />
+							<p:inputTextarea value="#{profileUserMB.profileUser.description}"
+								rows="5" maxlength="500" cols="50" />
+
+							<h:outputText value="Brithday:" />
+							<p:calendar value="#{userMB.currentUser.pflUser.dateOfBrithday}">
+								<f:convertDateTime pattern="dd/MM/yyy" />
+							</p:calendar>
+
+							<h:outputText value="Instagram:" />
+							<p:inputText value="#{profileUserMB.profileUser.instagram}" />
+
+							<h:outputText value="Facebook:" />
+							<p:inputText value="#{profileUserMB.profileUser.facebook}" />
+						</h:panelGrid>
+
+						<p:commandButton value="Save"
+							action="#{profileUserMB.saveOrUpdate}" />
+							<p:commandButton value="Cancelar" action="#{profileUserMB.cancelar}" />
+							
+							
+							
+					</h:form>
+				</div>
+				
+			</div>
+			
+			<ui:include src="hability.xhtml"></ui:include>
+			
+			<div class="container-profile">
+				<h:outputText value="Movimentos Culturais e Artísticos"
+					styleClass="content-title" />
+
+
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

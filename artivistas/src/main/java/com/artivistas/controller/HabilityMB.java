@@ -46,7 +46,7 @@ public class HabilityMB extends SpringBeanAutowiringSupport{
 		return"/pfl/profileuser.jsf";
 	}
 	
-	
+
 	public void setHabilityUser(HabilityUser habilityUser) {
 		this.habilityUser = habilityUser;
 	}

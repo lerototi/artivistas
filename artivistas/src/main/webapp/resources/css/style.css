@@ -114,7 +114,7 @@ nav {
 .container{
 	position: relative;
 	width: 100%;
-	margin-top: 80px;
+	margin-top: 57px;
 	left: 0;
 }
 
@@ -131,20 +131,28 @@ nav {
 	.container-profile{
 	float: left;
 	width: 60%;
-	min-height: 500px;
-	margin-top: 25px;
+	margin-top: 15px;
 	margin-left: 49px;
 	border-radius: 10px;
 	background-color: white;
 }
 
-.conteiner-prof-left{
-	position:relative;
+	.container-hability-profile{
 	float: left;
-	width:280px;
-	margin-top: 25px;
+	width: 47%;
+	margin-top: 15px;
+	border-radius: 10px;
+	background-color: white;
 }
 
+
+.conteiner-main-profile{
+	position:relative;
+	float: left;
+	background-color: white; 	
+	width:100%;
+	margin-top: 15px;
+}
 /*------------------------------CONTENTS------------------------------*/
 
 .content{
@@ -205,10 +213,8 @@ nav {
 .content-profile{
 	position: relative;
 	background-color: white;
-	margin-top: 2px;
 	width: 100%;
 	min-height: 300px; 
-	border-radius: 20px;
 }
 
 .profile-name{
@@ -216,11 +222,27 @@ nav {
 	font-weight: bold;
 }
 
+.inputWindow{
+	height: 100%;
+	width: 70%;
+	background-color: yellow;
+	
+}
+
 .content-bio{
+	position:relative;
+	width:45%;
+	background-color: white;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.content-bio-update{
 	position:relative;
 	width:100%;
 	background-color: white;
 	border-radius: 5px;
+	padding: 15px;
 	padding: 10px;
 }
 
@@ -292,3 +314,10 @@ nav {
 .hability .ui-datepicker-inline .ui-datepicker-calendar {
   display: none;        
 }
+
+.edit-icon{
+	width: 30px;
+	width: 30px;
+	
+}
+

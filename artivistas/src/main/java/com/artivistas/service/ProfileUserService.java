@@ -1,8 +1,5 @@
 package com.artivistas.service;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +19,16 @@ public class ProfileUserService {
 		
 		profileUser.setUser(user);
 		return profileUserRepository.save(profileUser) != null;
+	}
+
+	public ProfileUser findUserProfileByUser(User user) {
+		
+		return profileUserRepository.findByUser(user);
+	}
+
+	public ProfileUser save(ProfileUser profileUser) {
+
+		return profileUserRepository.save(profileUser);
 	}
 	
 }

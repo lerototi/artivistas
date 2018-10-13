@@ -2,11 +2,13 @@ package com.artivistas.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,12 +33,14 @@ public class UserService {
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	private static final User user_session = null;
+	
 	@Transactional
 	public List<User> getAllUsers(){
 		return (List<User>) userRepository.findAll();
 	}
 	
-	private User currentUser;
+	private static User currentUser = null;
 
 	private UserDetails userDetails;
 	
@@ -115,6 +119,8 @@ public class UserService {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	
 
 	public User getCurrentUser() {
 		if(currentUser ==null) {
@@ -133,12 +139,24 @@ public class UserService {
 	public void setCurrentUser(User currentUser) {
 		this.currentUser = currentUser;
 	}
+	
+	public Collection<? extends GrantedAuthority> getAuthoritiesCurrentUser() {
+		
+		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return userDetails.getAuthorities();
+	}
 
 	public String getNameCurrentUser() {
 		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return userDetails.getUsername();
 		
 	}
+
+	public static User getUserSession() {
+		return user_session;
+	}
+
+
 
 	
 }
